@@ -3,6 +3,10 @@
 
 Demo: http://jsbin.com/jipani/edit?html,js,output
 
+```no-highlight
+ember install ember-route-action-helper
+```
+
 The `route-action` helper allows you to bubble closure actions, which will delegate it to the currently active route hierarchy per the bubbling rules explained under `actions`. To use:
 
 ```hbs

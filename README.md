@@ -7,7 +7,11 @@ Demo: http://jsbin.com/jipani/edit?html,js,output
 ember install ember-route-action-helper
 ```
 
-The `route-action` helper allows you to bubble closure actions, which will delegate it to the currently active route hierarchy per the bubbling rules explained under `actions`. To use:
+The `route-action` helper allows you to bubble closure actions, which will delegate it to the currently active route hierarchy per the bubbling rules explained under `actions`. Like closure actions, `route-action` will also have a return value.
+
+However, returning `true` in an action will **not** preserve bubbling semantics. In case you would like that behavior, you should use ordinary string actions instead.
+
+## Usage
 
 ```hbs
 {{! foo/route.hbs }}
@@ -26,6 +30,26 @@ export default Route.extend({
   actions: {
     updateFoo(...args) {
       // handle action
+      return 42;
+    }
+  }
+});
+```
+
+The `route-action` has a return value:
+
+```js
+// foo/component.js
+import Ember from 'ember';
+
+const { Component } = Ember;
+
+export default Component.extend({
+  actions: {
+    anotherAction(...args) {
+      let result = this.attrs.updateFoo(...args);
+
+      console.log(result); // 42
     }
   }
 });

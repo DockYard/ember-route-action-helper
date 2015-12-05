@@ -2,11 +2,31 @@ import Ember from 'ember';
 import getOwner from 'ember-getowner-polyfill';
 
 const {
+  A: emberArray,
   Helper,
   assert,
   computed,
+  typeOf,
   get
 } = Ember;
+
+function getRoutes(router) {
+  return emberArray(router.router.currentHandlerInfos)
+    .mapBy('handler')
+    .reverse();
+}
+
+function getRouteWithAction(router, actionName) {
+  let action;
+  let handler = emberArray(getRoutes(router)).find((route) => {
+    let actions = route.actions || route._actions;
+    action = actions[actionName];
+
+    return typeOf(action) === 'function';
+  });
+
+  return { action, handler };
+}
 
 export default Helper.extend({
   router: computed(function() {
@@ -19,8 +39,10 @@ export default Helper.extend({
 
     return function(...invocationArgs) {
       let args = params.concat(invocationArgs);
+      let { action, handler } = getRouteWithAction(router, actionName);
+      assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
 
-      router.send(actionName, ...args);
+      return action.apply(handler, args);
     };
   }
 });

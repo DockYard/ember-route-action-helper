@@ -13,6 +13,8 @@ However, returning `true` in an action will **not** preserve bubbling semantics.
 
 ## Usage
 
+For example, this route template tells the component to lookup the `updateFoo` action on the route when its internal `clicked` property is invoked, and curries the function call with 2 arguments.
+
 ```hbs
 {{! foo/route.hbs }}
 {{foo-bar clicked=(route-action "updateFoo" "Hello" "world")}}

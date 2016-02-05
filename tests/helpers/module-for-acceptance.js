@@ -10,6 +10,13 @@ export default function(name, options = {}) {
       if (options.beforeEach) {
         options.beforeEach.apply(this, arguments);
       }
+
+      this.register = (fullName, Factory) => {
+        let instance = this.application.__deprecatedInstance__;
+        let registry = instance.register ? instance : instance.registry;
+
+        return registry.register(fullName, Factory);
+      };
     },
 
     afterEach() {

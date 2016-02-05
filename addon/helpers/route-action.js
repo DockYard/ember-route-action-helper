@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import getOwner from 'ember-getowner-polyfill';
+import { ACTION } from '../-private/internals';
 
 const {
   A: emberArray,
@@ -37,12 +38,16 @@ export default Helper.extend({
     let router = get(this, 'router');
     assert('[ember-route-action-helper] Unable to lookup router', router);
 
-    return function(...invocationArgs) {
+    let action = function(...invocationArgs) {
       let args = params.concat(invocationArgs);
       let { action, handler } = getRouteWithAction(router, actionName);
       assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
 
       return action.apply(handler, args);
     };
+
+    action[ACTION] = true;
+
+    return action;
   }
 });

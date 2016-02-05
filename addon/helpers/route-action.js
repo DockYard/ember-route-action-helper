@@ -8,7 +8,8 @@ const {
   assert,
   computed,
   typeOf,
-  get
+  get,
+  run
 } = Ember;
 
 function getRoutes(router) {
@@ -43,7 +44,7 @@ export default Helper.extend({
       let { action, handler } = getRouteWithAction(router, actionName);
       assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
 
-      return action.apply(handler, args);
+      return run.join(handler, action, ...args);
     };
 
     action[ACTION] = true;

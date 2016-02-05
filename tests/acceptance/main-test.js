@@ -1,5 +1,9 @@
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import Ember from 'ember';
+import hbs from 'htmlbars-inline-precompile';
+
+const { Route, Component } = Ember;
 
 moduleForAcceptance('Acceptance | main');
 
@@ -28,3 +32,24 @@ test('it has a return value', function(assert) {
   andThen(() => assert.equal(findWithAssert('.thing-show .max-value').text().trim(), '300'));
 });
 
+test('it can be used without rewrapping with (action (route-action "foo"))', function(assert) {
+  this.register('route:dynamic', Route.extend({
+    actions: {
+      foo() {
+        assert.ok(true, 'action was properly triggered on the route');
+      }
+    }
+  }));
+
+  this.register('template:dynamic', hbs`{{parent-component go=(route-action 'foo') }}`);
+  this.register('template:components/parent-component', hbs`{{child-component go=go}}`);
+  this.register('template:components/child-component', hbs`<button class="do-it">GO!</button>`);
+  this.register('component:child-component', Component.extend({
+    click() {
+      this.attrs.go();
+    }
+  }));
+
+  visit('/dynamic');
+  click('.do-it');
+});

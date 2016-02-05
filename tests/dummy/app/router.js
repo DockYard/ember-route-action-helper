@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('thing', function() {
     this.route('show');
   });
+  this.route('dynamic');
 });
 
 export default Router;

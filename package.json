@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/dockyard/ember-route-action-helper",
+  "repository": "https://github.com/DockYard/ember-route-action-helper",
   "engines": {
     "node": ">= 0.10.0"
   },

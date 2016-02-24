@@ -49,7 +49,7 @@ const { Component } = Ember;
 export default Component.extend({
   actions: {
     anotherAction(...args) {
-      let result = this.attrs.updateFoo(...args);
+      let result = this.get('updateFoo')(...args);
 
       console.log(result); // 42
     }

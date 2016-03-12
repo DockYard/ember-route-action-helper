@@ -57,6 +57,12 @@ export default Component.extend({
 });
 ```
 
+You may also use in conjunction with the `{{action}}` helper:
+
+```js
+<button {{action (route-action 'updateFoo')}}>Update Foo</button>
+```
+
 ## Compatibility
 
 This addon will work on Ember versions `1.13.x` and up only, due to use of the new `Helper` implementation.

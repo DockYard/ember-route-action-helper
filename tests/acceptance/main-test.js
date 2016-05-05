@@ -54,3 +54,14 @@ test('it can be used without rewrapping with (action (route-action "foo"))', fun
   visit('/dynamic');
   click('.do-it');
 });
+
+test('it should throw an error if the route action is missing', function(assert) {
+  this.register('route:dynamic', Route);
+  this.register('template:dynamic', hbs`{{test-component go=(route-action 'doesNotExist')}}`);
+  this.register('template:components/test-component', hbs`welp`);
+
+  visit('/dynamic').catch(err => {
+    const msg = 'Assertion Failed: [ember-route-action-helper] Unable to find action doesNotExist';
+    assert.equal(err.message, msg);
+  });
+});

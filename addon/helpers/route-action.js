@@ -39,16 +39,16 @@ export default Helper.extend({
     let router = get(this, 'router');
     assert('[ember-route-action-helper] Unable to lookup router', router);
 
-    let action = function(...invocationArgs) {
-      let args = params.concat(invocationArgs);
-      let { action, handler } = getRouteWithAction(router, actionName);
-      assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
+    let { action, handler } = getRouteWithAction(router, actionName);
+    assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
 
+    let routeAction = function(...invocationArgs) {
+      let args = params.concat(invocationArgs);
       return run.join(handler, action, ...args);
     };
 
-    action[ACTION] = true;
+    routeAction[ACTION] = true;
 
-    return action;
+    return routeAction;
   }
 });

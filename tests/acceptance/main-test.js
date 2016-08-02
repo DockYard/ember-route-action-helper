@@ -46,7 +46,7 @@ test('it can be used without rewrapping with (action (route-action "foo"))', fun
   this.register('template:components/child-component', hbs`<button class="do-it">GO!</button>`);
   this.register('component:child-component', Component.extend({
     click() {
-      this.attrs.go();
+      this.get('go')();
     }
   }));
 

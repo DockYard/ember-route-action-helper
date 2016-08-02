@@ -105,6 +105,17 @@ module.exports = {
           'ember': 'canary'
         }
       }
+    },
+    {
+      name: 'ember-alpha',
+      bower: {
+        dependencies: {
+          'ember': 'alpha'
+        },
+        resolutions: {
+          'ember': 'alpha'
+        }
+      }
     }
   ]
 };

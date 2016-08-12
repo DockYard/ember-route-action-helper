@@ -1,4 +1,4 @@
-import { test } from 'qunit';
+import { test } from 'ember-qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';

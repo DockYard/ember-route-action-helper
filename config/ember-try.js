@@ -1,119 +1,77 @@
 /*jshint node:true*/
+var command = [ 'ember', 'exam', '--split', '3', '--random' ];
+
 module.exports = {
+  command: command.join(' '),
   scenarios: [
     {
-      name: 'default',
-      bower: {
-        dependencies: { }
-      }
-    },
-    {
-      name: 'ember-1.13',
+      name: 'ember-pre-2',
       bower: {
         dependencies: {
-          'ember': '~1.13.0'
-        },
-        resolutions: {
-          'ember': '~1.13.0'
+          "ember": "~1.13.0"
         }
       }
     },
     {
-      name: 'ember-2.0',
+      name: 'ember-2',
       bower: {
         dependencies: {
-          'ember': '~2.0.0'
-        },
-        resolutions: {
-          'ember': '~2.0.0'
+          "ember": "~2.0.0"
         }
       }
     },
     {
-      name: 'ember-2.1',
+      name: 'ember-lts',
       bower: {
         dependencies: {
-          'ember': '~2.1.0'
-        },
-        resolutions: {
-          'ember': '~2.1.0'
+          "ember": "~2.4.0"
         }
       }
     },
     {
-      name: 'ember-2.2',
+      name: 'ember-latest',
       bower: {
         dependencies: {
-          'ember': '~2.2.0'
+          "ember": "release"
         },
         resolutions: {
-          'ember': '~2.2.0'
-        }
-      }
-    },
-    {
-      name: 'ember-2.3',
-      bower: {
-        dependencies: {
-          'ember': '~2.3.0'
-        },
-        resolutions: {
-          'ember': '~2.3.0'
-        }
-      }
-    },
-    {
-      name: 'ember-2.4',
-      bower: {
-        dependencies: {
-          'ember': '~2.4.0'
-        },
-        resolutions: {
-          'ember': '~2.4.0'
-        }
-      }
-    },
-    {
-      name: 'ember-release',
-      bower: {
-        dependencies: {
-          'ember': 'components/ember#release'
-        },
-        resolutions: {
-          'ember': 'release'
+          "ember": "release"
         }
       }
     },
     {
       name: 'ember-beta',
+      allowedToFail: true,
       bower: {
         dependencies: {
-          'ember': 'components/ember#beta'
+          "ember": "beta"
         },
         resolutions: {
-          'ember': 'beta'
+          "ember": "beta"
         }
       }
     },
     {
       name: 'ember-canary',
+      allowedToFail: true,
       bower: {
         dependencies: {
-          'ember': 'components/ember#canary'
+          "ember": "canary"
         },
         resolutions: {
-          'ember': 'canary'
+          "ember": "canary"
         }
       }
     },
     {
       name: 'ember-alpha',
+      allowedToFail: true,
       bower: {
         dependencies: {
-          'ember': 'alpha'
+          "ember": "alpha"
         },
         resolutions: {
-          'ember': 'alpha'
+          "ember": "alpha"
         }
       }
     }

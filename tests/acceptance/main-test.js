@@ -1,11 +1,29 @@
-import { test } from 'qunit';
+import { test } from 'ember-qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 const { Route, Component } = Ember;
 
-moduleForAcceptance('Acceptance | main');
+moduleForAcceptance('Acceptance | main', {
+  beforeEach: function(assert) {
+    this.application.register('route:dynamic', Route.extend({
+      actions: {
+        foo() {
+          assert.ok(true, 'action was properly triggered on the route');
+        }
+      }
+    }));
+    this.application.register('template:dynamic', hbs`{{parent-component go=(route-action 'foo') }}`);
+    this.application.register('template:components/parent-component', hbs`{{child-component go=go}}`);
+    this.application.register('template:components/child-component', hbs`<button class="do-it">GO!</button>`);
+    this.application.register('component:child-component', Component.extend({
+      click() {
+        this.get('go')();
+      }
+    }));
+  }
+});
 
 test('it bubbles a route action', function(assert) {
   visit('/thing');
@@ -32,24 +50,7 @@ test('it has a return value', function(assert) {
   andThen(() => assert.equal(findWithAssert('.thing-show .max-value').text().trim(), '300'));
 });
 
-test('it can be used without rewrapping with (action (route-action "foo"))', function(assert) {
-  this.register('route:dynamic', Route.extend({
-    actions: {
-      foo() {
-        assert.ok(true, 'action was properly triggered on the route');
-      }
-    }
-  }));
-
-  this.register('template:dynamic', hbs`{{parent-component go=(route-action 'foo') }}`);
-  this.register('template:components/parent-component', hbs`{{child-component go=go}}`);
-  this.register('template:components/child-component', hbs`<button class="do-it">GO!</button>`);
-  this.register('component:child-component', Component.extend({
-    click() {
-      this.get('go')();
-    }
-  }));
-
+test('it can be used without rewrapping with (action (route-action "foo"))', function() {
   visit('/dynamic');
   click('.do-it');
 });

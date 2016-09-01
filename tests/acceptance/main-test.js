@@ -15,6 +15,7 @@ moduleForAcceptance('Acceptance | main', {
       }
     }));
     this.application.register('template:dynamic', hbs`{{parent-component go=(route-action 'foo') }}`);
+    this.application.register('template:dynamic2', hbs`{{parent-component go=(route-action 'notAnAction')}}`);
     this.application.register('template:components/parent-component', hbs`{{child-component go=go}}`);
     this.application.register('template:components/child-component', hbs`<button class="do-it">GO!</button>`);
     this.application.register('component:child-component', Component.extend({
@@ -55,13 +56,10 @@ test('it can be used without rewrapping with (action (route-action "foo"))', fun
   click('.do-it');
 });
 
-test('it should throw an error if the route action is missing', function(assert) {
-  this.register('route:dynamic', Route);
-  this.register('template:dynamic', hbs`{{test-component go=(route-action 'doesNotExist')}}`);
-  this.register('template:components/test-component', hbs`welp`);
+test('it should throw an error immediately if the route action is missing', function(assert) {
+  const promise = visit('/dynamic2');
 
-  visit('/dynamic').catch(err => {
-    const msg = 'Assertion Failed: [ember-route-action-helper] Unable to find action doesNotExist';
-    assert.equal(err.message, msg);
-  });
+  assert.expect(1);
+  const msg = 'Assertion Failed: [ember-route-action-helper] Unable to find action notAnAction';
+  promise.then(() => {}, err => assert.equal(err.message, msg));
 });

@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('show');
   });
   this.route('dynamic');
+  this.route('dynamic2');
 });
 
 export default Router;

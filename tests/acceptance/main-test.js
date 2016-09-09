@@ -57,9 +57,8 @@ test('it can be used without rewrapping with (action (route-action "foo"))', fun
 });
 
 test('it should throw an error immediately if the route action is missing', function(assert) {
-  const promise = visit('/dynamic2');
+  visit('/dynamic2');
 
-  assert.expect(1);
   const msg = 'Assertion Failed: [ember-route-action-helper] Unable to find action notAnAction';
-  promise.then(() => {}, err => assert.equal(err.message, msg));
+  andThen().catch(err => assert.equal(err.message, msg));
 });

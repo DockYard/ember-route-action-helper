@@ -59,6 +59,6 @@ test('it can be used without rewrapping with (action (route-action "foo"))', fun
 test('it should throw an error immediately if the route action is missing', function(assert) {
   visit('/dynamic2');
 
-  const msg = 'Assertion Failed: [ember-route-action-helper] Unable to find action notAnAction';
-  andThen().catch(err => assert.equal(err.message, msg));
+  let expectedResult = 'Assertion Failed: [ember-route-action-helper] Unable to find action notAnAction';
+  andThen().catch(({ message }) => assert.equal(message, expectedResult));
 });

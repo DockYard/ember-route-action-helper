@@ -38,7 +38,7 @@ export default Route.extend({
 });
 ```
 
-The `route-action` has a return value:
+If no action is found after bubbling, an error will be raised. The `route-action` also has a return value:
 
 ```js
 // foo/component.js

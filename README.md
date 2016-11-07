@@ -84,6 +84,35 @@ This addon will work on Ember versions `1.13.x` and up only, due to use of the n
 * `ember test`
 * `ember test --server`
 
+## Overriding route-action for integration tests
+
+This helper is designed for use in controller templates, not in
+components. It will not, therefore, resolve route action references
+in an integration test. If you are using this helper in your components,
+you can override the helper using a pattern similar to the following:
+
+```
+import { moduleForComponent, test } from 'ember-qunit';
+import hbs from 'htmlbars-inline-precompile';
+import Ember from 'ember';
+
+moduleForComponent('uses-route-action', 'Integration | Component | uses route action', {
+  integration: true,
+  beforeEach(assert) {
+    this.container
+      .registry
+      .registrations['helper:route-action'] = Ember.Helper.helper((arg) => {
+        return this.routeActions[arg];
+      });
+    this.routeActions = {
+      doSomething(arg) {
+        return Ember.RSVP.resolve({arg});
+      },
+    };
+  },
+});
+```
+
 ## Building
 
 * `ember build`

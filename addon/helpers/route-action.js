@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import getOwner from 'ember-getowner-polyfill';
 import { ACTION } from '../-private/internals';
 
 const {
@@ -9,6 +8,7 @@ const {
   computed,
   typeOf,
   get,
+  getOwner,
   run
 } = Ember;
 

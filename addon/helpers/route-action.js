@@ -9,7 +9,8 @@ const {
   typeOf,
   get,
   getOwner,
-  run
+  run,
+  runInDebug
 } = Ember;
 
 function getRoutes(router) {
@@ -39,10 +40,13 @@ export default Helper.extend({
     let router = get(this, 'router');
     assert('[ember-route-action-helper] Unable to lookup router', router);
 
-    let { action, handler } = getRouteWithAction(router, actionName);
-    assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
+    runInDebug(() => {
+      let { handler } = getRouteWithAction(router, actionName);
+      assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
+    });
 
     let routeAction = function(...invocationArgs) {
+      let { action, handler } = getRouteWithAction(router, actionName);
       let args = params.concat(invocationArgs);
       return run.join(handler, action, ...args);
     };

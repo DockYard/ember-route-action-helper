@@ -66,3 +66,12 @@ test('it should throw an error immediately if the route action is missing', func
     done();
   });
 });
+
+test('it invokes action in the current route hierarchy', function(assert) {
+  visit('/thing');
+  click('.foo-button');
+  andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'Hello world Bob!'));
+  visit('/thing/route-with-action');
+  click('.foo-button');
+  andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'Set via route-with-action: Hello world Bob!'));
+});

@@ -13,8 +13,14 @@ const {
   runInDebug
 } = Ember;
 
+function getCurrentHandlerInfos(router) {
+  let routerLib = router._routerMicrolib || router.router;
+
+  return routerLib.currentHandlerInfos;
+}
+
 function getRoutes(router) {
-  return emberArray(router.router.currentHandlerInfos)
+  return emberArray(getCurrentHandlerInfos(router))
     .mapBy('handler')
     .reverse();
 }

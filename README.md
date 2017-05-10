@@ -7,38 +7,20 @@ Demo: http://jsbin.com/jipani/edit?html,js,output
 ember install ember-route-action-helper
 ```
 
-The `route-action` helper allows you to bubble closure actions, which will delegate it to the currently active route hierarchy per the bubbling rules explained under `actions`. Like closure actions, `route-action` will also have a return value.
+The `route-action` helper allows you to call actions from routes. Like closure actions, `route-action` will also have a return value.
 
-However, returning `true` in an action will **not** preserve bubbling semantics. In case you would like that behavior, you should use ordinary string actions instead.
+Route actions do not bubble. In case you would like that behavior, you should use ordinary string actions instead.
 
 ## Usage
 
-For example, this route template tells the component to lookup the `updateFoo` action on the route when its internal `clicked` property is invoked, and curries the function call with 2 arguments.
+For example, this route template tells the component to lookup the `updateFoo` action on the current route when its internal `clicked` property is invoked, and curries the function call with 2 arguments.
 
 ```hbs
 {{! foo/route.hbs }}
 {{foo-bar clicked=(route-action "updateFoo" "Hello" "world")}}
 ```
 
-If the action is not found on the current route, it is bubbled up:
-
-```js
-// application/route.js
-import Ember from 'ember';
-
-const { Route, set } = Ember;
-
-export default Route.extend({
-  actions: {
-    updateFoo(...args) {
-      // handle action
-      return 42;
-    }
-  }
-});
-```
-
-If no action is found after bubbling, an error will be raised. The `route-action` also has a return value:
+If no action is found, an error will be raised. The `route-action` also has a return value:
 
 ```js
 // foo/component.js
@@ -65,7 +47,7 @@ You may also use in conjunction with the `{{action}}` helper:
 
 ## Compatibility
 
-This addon will work on Ember versions `1.13.x` and up only, due to use of the new `Helper` implementation.
+This addon will work on Ember versions `2.x` and up only.
 
 ## Installation
 

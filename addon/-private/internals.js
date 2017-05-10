@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Ember from 'ember';
 
 let ClosureActionModule;

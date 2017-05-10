@@ -26,29 +26,44 @@ moduleForAcceptance('Acceptance | main', {
   }
 });
 
-test('it bubbles a route action', function(assert) {
-  visit('/thing');
+test('it has a return value', function(assert) {
+  visit('/math');
 
-  andThen(() => assert.equal(currentURL(), '/thing'));
-  andThen(() => click('.foo-button'));
-  andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'Hello world Bob!'));
+  andThen(() => assert.equal(currentURL(), '/math'));
+  andThen(() => click('#math-1'));
+  andThen(() => assert.equal(findWithAssert('#math-value').text().trim(), '3'));
+  andThen(() => click('#math-2'));
+  andThen(() => assert.equal(findWithAssert('#math-value').text().trim(), '16'));
+  andThen(() => click('#math-3'));
+  andThen(() => assert.equal(findWithAssert('#math-value').text().trim(), '15'));
+  andThen(() => click('.confirm-value-button'));
+  andThen(() => assert.equal(findWithAssert('.confirm-value').text().trim(), 'My value is 25'));
 });
 
-test('it has a return value', function(assert) {
-  visit('/thing');
+test('it can be partially applied', function(assert) {
+  visit('/math');
 
-  andThen(() => assert.equal(currentURL(), '/thing'));
-  andThen(() => click('.thing .max-button'));
-  andThen(() => assert.equal(findWithAssert('.thing .max-value').text().trim(), '20'));
+  andThen(() => click('.add-value-button'));
+  andThen(() => assert.equal(findWithAssert('.add-value').text().trim(), 'My value is 7'));
+});
 
-  // changing routes, 2 helpers invoked
-  andThen(() => visit('/thing/show'));
-  andThen(() => assert.equal(currentURL(), '/thing/show'));
-  andThen(() => click('.thing-show .max-button'));
+test('it invokes action in the current route hierarchy', function(assert) {
+  visit('/math');
+  andThen(() => click('#math-1'));
+  andThen(() => assert.equal(findWithAssert('#math-value').text().trim(), '3'));
+  visit('/math/add');
+  andThen(() => click('#math-add-1'));
+  andThen(() => assert.equal(findWithAssert('#math-add-value').text().trim(), '[math/add] Value is: 3'));
+});
 
-  // ensure values are different
-  andThen(() => assert.equal(findWithAssert('.thing .max-value').text().trim(), '20'));
-  andThen(() => assert.equal(findWithAssert('.thing-show .max-value').text().trim(), '300'));
+test('it handles .index routes', function(assert) {
+  visit('/hello');
+  andThen(() => click('#hello-index-button'));
+  andThen(() => assert.equal(findWithAssert('#hello-index-value').text().trim(), 'Hello from hello.index'));
+  andThen(() => click('#hello-button-1'));
+  andThen(() => assert.equal(findWithAssert('#hello-value').text().trim(), '', 'should not fire because `hello.index` action takes precedence'));
+  andThen(() => click('#hello-button-2'));
+  andThen(() => assert.equal(findWithAssert('#hello-value').text().trim(), 'HELLO FROM HELLO'));
 });
 
 test('it can be used without rewrapping with (action (route-action "foo"))', function() {
@@ -67,13 +82,4 @@ skip('it should throw an error immediately if the route action is missing', func
   //     done();
   //   });
   // });
-});
-
-test('it invokes action in the current route hierarchy', function(assert) {
-  visit('/thing');
-  click('.foo-button');
-  andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'Hello world Bob!'));
-  visit('/thing/route-with-action');
-  click('.foo-button');
-  andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'Set via route-with-action: Hello world Bob!'));
 });

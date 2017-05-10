@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "types": [
+      "ember"
+    ]
+  },
+  "include": [
+    "addon/**/*"
+  ]
+}

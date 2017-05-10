@@ -7,10 +7,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('thing', function() {
-    this.route('show');
-    this.route('route-with-action');
+  this.route('math', function() {
+    this.route('add');
   });
+  this.route('hello', function() {
+    this.route('world');
+  })
   this.route('dynamic');
   this.route('dynamic2');
 });

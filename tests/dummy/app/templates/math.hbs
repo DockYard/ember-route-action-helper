@@ -1,0 +1,10 @@
+<div id="math-value">{{value}}</div>
+
+<button id="math-1" onclick={{route-action "add" 1 2}}>Add</button>
+<button id="math-2" onclick={{route-action "square" 4}}>Add</button>
+<button id="math-3" onclick={{route-action "triple" 5}}>Add</button>
+
+{{confirm-value doAction=(route-action "square" 5)}}
+{{add-value add=(route-action "add" 3)}}
+
+{{outlet}}

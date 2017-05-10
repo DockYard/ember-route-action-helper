@@ -14,8 +14,16 @@ moduleForAcceptance('Acceptance | main', {
         }
       }
     }));
+    this.application.register('route:dynamic3', Route.extend({
+      actions: {
+        async bar() {
+          assert.ok(true, 'async functions are found');
+        }
+      }
+    }));
     this.application.register('template:dynamic', hbs`{{parent-component go=(route-action 'foo') }}`);
     this.application.register('template:dynamic2', hbs`{{parent-component go=(route-action 'notAnAction')}}`);
+    this.application.register('template:dynamic3', hbs`{{parent-component go=(route-action 'bar')}}`);
     this.application.register('template:components/parent-component', hbs`{{child-component go=go}}`);
     this.application.register('template:components/child-component', hbs`<button class="do-it">GO!</button>`);
     this.application.register('component:child-component', Component.extend({
@@ -51,8 +59,15 @@ test('it has a return value', function(assert) {
   andThen(() => assert.equal(findWithAssert('.thing-show .max-value').text().trim(), '300'));
 });
 
-test('it can be used without rewrapping with (action (route-action "foo"))', function() {
+test('it can be used without rewrapping with (action (route-action "foo"))', function(assert) {
+  assert.expect(1);
   visit('/dynamic');
+  click('.do-it');
+});
+
+test('it works with async functions', function(assert) {
+  assert.expect(1);
+  visit('/dynamic3');
   click('.do-it');
 });
 

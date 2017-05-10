@@ -6,7 +6,6 @@ const {
   Helper,
   assert,
   computed,
-  typeOf,
   get,
   getOwner,
   run,
@@ -31,7 +30,7 @@ function getRouteWithAction(router, actionName) {
     let actions = route.actions || route._actions;
     action = actions[actionName];
 
-    return typeOf(action) === 'function';
+    return typeof(action) === 'function';
   });
 
   return { action, handler };

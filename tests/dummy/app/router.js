@@ -13,6 +13,7 @@ Router.map(function() {
   });
   this.route('dynamic');
   this.route('dynamic2');
+  this.route('dynamic3');
 });
 
 export default Router;

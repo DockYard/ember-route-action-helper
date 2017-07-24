@@ -13,33 +13,31 @@
   },
   "repository": "https://github.com/DockYard/ember-route-action-helper",
   "engines": {
-    "node": ">= 4"
+    "node": "^4.5 || 6.* || >= 7.*"
   },
-  "author": [
-    "Robert Jackson <me@rwjblue.com>",
-    "Lauren Tan <arr@sugarpirate.com>"
+  "author": "Lauren Tan <arr@sugarpirate.com>",
+  "contributors": [
+    "Robert Jackson <me@rwjblue.com>"
   ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
-    "ember-cli": "2.13.0",
-    "ember-cli-app-version": "^2.0.0",
+    "ember-cli": "~2.14.1",
     "ember-cli-dependency-checker": "^1.3.0",
     "ember-cli-eslint": "^3.0.0",
-    "ember-cli-htmlbars": "^1.1.1",
-    "ember-cli-htmlbars-inline-precompile": "^0.4.0",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^0.4.3",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0-beta.1",
+    "ember-cli-qunit": "^4.0.0",
     "ember-cli-release": "^0.2.9",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-disable-prototype-extensions": "^1.1.0",
+    "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~2.13.0",
     "loader.js": "^4.2.3"
   },
   "keywords": [
@@ -48,7 +46,7 @@
     "route action"
   ],
   "dependencies": {
-    "ember-cli-babel": "^6.0.0",
+    "ember-cli-babel": "^6.3.0",
     "ember-getowner-polyfill": "^1.1.1"
   },
   "ember-addon": {

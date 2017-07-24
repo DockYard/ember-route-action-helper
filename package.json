@@ -13,7 +13,7 @@
   },
   "repository": "https://github.com/DockYard/ember-route-action-helper",
   "engines": {
-    "node": ">= 4"
+    "node": "^4.5 || 6.* || >= 7.*"
   },
   "author": [
     "Robert Jackson <me@rwjblue.com>",

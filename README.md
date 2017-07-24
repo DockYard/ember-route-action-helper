@@ -1,4 +1,7 @@
 # ember-route-action-helper ![Download count all time](https://img.shields.io/npm/dt/ember-route-action-helper.svg) [![CircleCI](https://circleci.com/gh/DockYard/ember-route-action-helper.svg?style=shield)](https://circleci.com/gh/DockYard/ember-route-action-helper) [![npm version](https://badge.fury.io/js/ember-route-action-helper.svg)](https://badge.fury.io/js/ember-route-action-helper)
+
+**[ember-router-action-helper is built and maintained by DockYard, contact us for expert Ember.js consulting](https://dockyard.com/ember-consulting)**.
+
 *Credit: @rwjblue's [jsbin](http://jsbin.com/jipani/edit?html,js,output)*
 
 Demo: http://jsbin.com/jipani/edit?html,js,output

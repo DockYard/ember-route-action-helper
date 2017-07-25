@@ -41,7 +41,7 @@ export default Helper.extend({
     return getOwner(this).lookup('router:main');
   }).readOnly(),
 
-  compute([actionName, ...params]) {
+  compute([actionName, ...params], namedValue) {
     let router = get(this, 'router');
     assert('[ember-route-action-helper] Unable to lookup router', router);
 
@@ -50,10 +50,20 @@ export default Helper.extend({
       assert(`[ember-route-action-helper] Unable to find action ${actionName}`, handler);
     });
 
+    let processArgs = (args) => {
+      let valuePath = namedValue && namedValue.value;
+
+      if (valuePath && args.length > 0) {
+        args[0] = get(args[0], valuePath);
+      }
+
+      return args;
+    }
+
     let routeAction = function(...invocationArgs) {
       let { action, handler } = getRouteWithAction(router, actionName);
       let args = params.concat(invocationArgs);
-      return run.join(handler, action, ...args);
+      return run.join(handler, action, ...processArgs(args));
     };
 
     routeAction[ACTION] = true;

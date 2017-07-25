@@ -92,3 +92,12 @@ test('it invokes action in the current route hierarchy', function(assert) {
   click('.foo-button');
   andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'Set via route-with-action: Hello world Bob!'));
 });
+
+test('it calls action with the specified valuePath', function(assert) {
+  visit('/');
+  andThen(() => {
+    let optionBar = find('.option-bar');
+    fillIn('.foo-select', optionBar.val());
+    andThen(() => assert.equal(findWithAssert('.foo-value').text().trim(), 'bar'));
+  });
+});

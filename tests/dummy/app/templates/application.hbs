@@ -1,3 +1,8 @@
 <h2 class="foo-value">{{foo}}</h2>
 
+<select class="foo-select" onchange={{route-action "updateFoo" value="target.value"}}>
+  <option value="baz">Baz</option>
+  <option value="bar" class="option-bar">Bar</option>
+</select>
+
 {{outlet}}

@@ -1,9 +1,8 @@
+import Route from '@ember/routing/route';
+import Component from '@ember/component';
 import { test, skip } from 'ember-qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
-import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
-
-const { Route, Component } = Ember;
 
 moduleForAcceptance('Acceptance | main', {
   beforeEach: function(assert) {

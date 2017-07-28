@@ -1,16 +1,10 @@
-import Ember from 'ember';
+import { A as emberArray } from '@ember/array';
+import Helper from '@ember/component/helper';
+import { get, computed } from '@ember/object';
+import { getOwner } from '@ember/application';
+import { run } from '@ember/runloop';
+import { runInDebug, assert } from '@ember/debug';
 import { ACTION } from '../-private/internals';
-
-const {
-  A: emberArray,
-  Helper,
-  assert,
-  computed,
-  get,
-  getOwner,
-  run,
-  runInDebug
-} = Ember;
 
 function getCurrentHandlerInfos(router) {
   let routerLib = router._routerMicrolib || router.router;

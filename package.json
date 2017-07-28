@@ -46,7 +46,7 @@
     "route action"
   ],
   "dependencies": {
-    "ember-cli-babel": "^6.3.0",
+    "ember-cli-babel": "^6.6.0",
     "ember-getowner-polyfill": "^1.1.1"
   },
   "ember-addon": {

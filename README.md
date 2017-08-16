@@ -94,7 +94,7 @@ components. It will not, therefore, resolve route action references
 in an integration test. If you are using this helper in your components,
 you can override the helper using a pattern similar to the following:
 
-```
+```js
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';

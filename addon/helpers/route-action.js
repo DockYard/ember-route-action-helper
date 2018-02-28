@@ -12,6 +12,12 @@ function getCurrentHandlerInfos(router) {
   return routerLib.currentHandlerInfos;
 }
 
+function getCurrentHandlerInfos(router) {
+  let routerLib = router._routerMicrolib || router.router;
+
+  return routerLib.currentHandlerInfos;
+}
+
 function getRoutes(router) {
   return emberArray(getCurrentHandlerInfos(router))
     .mapBy('handler')

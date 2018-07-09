@@ -107,7 +107,7 @@ import { resolve } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { helper as buildHelper } from '@ember/component/helper';
 
-module('Integration | Component | transactions/transactions filter', function (hooks) {
+module('Integration | Component | uses route action', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {

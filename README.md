@@ -98,7 +98,7 @@ components. It will not, therefore, resolve route action references
 in an integration test. If you are using this helper in your components,
 you can override the helper using a pattern similar to the following:
 
-#### Post introduction of [RFC#232](https://github.com/emberjs/rfcs/blob/master/text/0232-simplify-qunit-testing-api.md), [RFC#176](https://github.com/emberjs/rfcs/blob/master/text/0176-javascript-module-api.md) and [@ember/test-helpers](https://github.com/emberjs/ember-test-helpers#readme):
+#### Post introduction of [RFC#232](https://github.com/emberjs/rfcs/blob/master/text/0232-simplify-qunit-testing-api.md), [RFC#176](https://github.com/emberjs/rfcs/blob/master/text/0176-javascript-module-api.md), [RFC#150](https://github.com/emberjs/rfcs/blob/master/text/0150-factory-for.md) and [@ember/test-helpers](https://github.com/emberjs/ember-test-helpers#readme):
 
 ```js
 import { module, test } from 'qunit';

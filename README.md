@@ -98,6 +98,34 @@ components. It will not, therefore, resolve route action references
 in an integration test. If you are using this helper in your components,
 you can override the helper using a pattern similar to the following:
 
+#### Post introduction of [RFC#232](https://github.com/emberjs/rfcs/blob/master/text/0232-simplify-qunit-testing-api.md), [RFC#176](https://github.com/emberjs/rfcs/blob/master/text/0176-javascript-module-api.md) and [@ember/test-helpers](https://github.com/emberjs/ember-test-helpers#readme):
+
+```js
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { resolve } from 'rsvp';
+import hbs from 'htmlbars-inline-precompile';
+import { helper as buildHelper } from '@ember/component/helper';
+
+module('Integration | Component | transactions/transactions filter', function (hooks) {
+  setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
+    this.owner.register('helper:route-action', buildHelper(arg => this.routeActions[arg]));
+
+    this.routeActions = {
+      doSomething(arg) {
+        return resolve({arg});
+      },
+    };
+  });
+
+  TEST BLOCKS GO HERE
+};
+```
+
+#### Legacy syntax:
+
 ```js
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';

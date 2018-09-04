@@ -101,14 +101,14 @@ you can override the helper using a pattern similar to the following:
 ```js
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
+import { helper }  from '@ember/component/helper';
 
 moduleForComponent('uses-route-action', 'Integration | Component | uses route action', {
   integration: true,
   beforeEach(assert) {
     this.container
       .registry
-      .registrations['helper:route-action'] = Ember.Helper.helper((arg) => {
+      .registrations['helper:route-action'] = helper((arg) => {
         return this.routeActions[arg];
       });
     this.routeActions = {

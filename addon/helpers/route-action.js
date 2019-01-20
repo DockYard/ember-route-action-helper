@@ -9,12 +9,12 @@ import { ACTION } from '../-private/internals';
 function getCurrentHandlerInfos(router) {
   let routerLib = router._routerMicrolib || router.router;
 
-  return routerLib.currentHandlerInfos;
+  return routerLib.currentRouteInfos;
 }
 
 function getRoutes(router) {
   return emberArray(getCurrentHandlerInfos(router))
-    .mapBy('handler')
+    .mapBy('route')
     .reverse();
 }
 

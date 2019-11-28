@@ -133,3 +133,31 @@ For more information on using ember-cli, visit [http://www.ember-cli.com/](http:
 [@dockyard](http://twitter.com/dockyard)
 
 [Licensed under the MIT license](http://www.opensource.org/licenses/mit-license.php)
+
+## Contributors
+
+We're grateful to these wonderful contributors who've contributed to `ember-route-action-helper`:
+
+[//]: contributor-faces
+<a href="https://github.com/poteto"><img src="https://avatars0.githubusercontent.com/u/1390709?v=4" title="poteto" width="80" height="80"></a>
+<a href="https://github.com/martndemus"><img src="https://avatars2.githubusercontent.com/u/903637?v=4" title="martndemus" width="80" height="80"></a>
+<a href="https://github.com/rwjblue"><img src="https://avatars0.githubusercontent.com/u/12637?v=4" title="rwjblue" width="80" height="80"></a>
+<a href="https://github.com/nicomihalich"><img src="https://avatars0.githubusercontent.com/u/748245?v=4" title="nicomihalich" width="80" height="80"></a>
+<a href="https://github.com/bcardarella"><img src="https://avatars0.githubusercontent.com/u/18524?v=4" title="bcardarella" width="80" height="80"></a>
+<a href="https://github.com/Frozenfire92"><img src="https://avatars0.githubusercontent.com/u/5893112?v=4" title="Frozenfire92" width="80" height="80"></a>
+<a href="https://github.com/kellyselden"><img src="https://avatars1.githubusercontent.com/u/602423?v=4" title="kellyselden" width="80" height="80"></a>
+<a href="https://github.com/artemgurzhii"><img src="https://avatars2.githubusercontent.com/u/13109164?v=4" title="artemgurzhii" width="80" height="80"></a>
+<a href="https://github.com/BnitoBzh"><img src="https://avatars0.githubusercontent.com/u/2962152?v=4" title="BnitoBzh" width="80" height="80"></a>
+<a href="https://github.com/topaxi"><img src="https://avatars0.githubusercontent.com/u/213788?v=4" title="topaxi" width="80" height="80"></a>
+<a href="https://github.com/kiwiupover"><img src="https://avatars3.githubusercontent.com/u/647691?v=4" title="kiwiupover" width="80" height="80"></a>
+<a href="https://github.com/artzte"><img src="https://avatars1.githubusercontent.com/u/11142?v=4" title="artzte" width="80" height="80"></a>
+<a href="https://github.com/jakesjews"><img src="https://avatars1.githubusercontent.com/u/481412?v=4" title="jakesjews" width="80" height="80"></a>
+<a href="https://github.com/nucleartide"><img src="https://avatars3.githubusercontent.com/u/914228?v=4" title="nucleartide" width="80" height="80"></a>
+<a href="https://github.com/rondale-sc"><img src="https://avatars0.githubusercontent.com/u/75710?v=4" title="rondale-sc" width="80" height="80"></a>
+<a href="https://github.com/lukemelia"><img src="https://avatars2.githubusercontent.com/u/353?v=4" title="lukemelia" width="80" height="80"></a>
+<a href="https://github.com/cibernox"><img src="https://avatars2.githubusercontent.com/u/265339?v=4" title="cibernox" width="80" height="80"></a>
+<a href="https://github.com/yaymukund"><img src="https://avatars0.githubusercontent.com/u/590450?v=4" title="yaymukund" width="80" height="80"></a>
+<a href="https://github.com/locks"><img src="https://avatars1.githubusercontent.com/u/32344?v=4" title="locks" width="80" height="80"></a>
+<a href="https://github.com/Turbo87"><img src="https://avatars2.githubusercontent.com/u/141300?v=4" title="Turbo87" width="80" height="80"></a>
+
+[//]: contributor-faces

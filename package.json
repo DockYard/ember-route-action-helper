@@ -1,6 +1,6 @@
 {
   "name": "ember-route-action-helper",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Bubble closure actions in routes",
   "directories": {
     "doc": "doc",

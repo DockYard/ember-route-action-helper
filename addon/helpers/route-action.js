@@ -1,8 +1,9 @@
 import { A as emberArray } from '@ember/array';
 import Helper from '@ember/component/helper';
-import { get, computed } from '@ember/object';
+import { get } from '@ember/object';
+import { readOnly } from '@ember/object/computed';
 import { getOwner } from '@ember/application';
-import { run } from '@ember/runloop';
+import { join } from '@ember/runloop';
 import { runInDebug, assert } from '@ember/debug';
 import { ACTION } from '../-private/internals';
 
@@ -35,9 +36,9 @@ function getRouteWithAction(router, actionName) {
 }
 
 export default Helper.extend({
-  router: computed(function() {
+  router: readOnly(function() {
     return getOwner(this).lookup('router:main');
-  }).readOnly(),
+  }),
 
   compute([actionName, ...params]) {
     let router = get(this, 'router');
@@ -51,7 +52,7 @@ export default Helper.extend({
     let routeAction = function(...invocationArgs) {
       let { action, handler } = getRouteWithAction(router, actionName);
       let args = params.concat(invocationArgs);
-      return run.join(handler, action, ...args);
+      return join(handler, action, ...args);
     };
 
     routeAction[ACTION] = true;
